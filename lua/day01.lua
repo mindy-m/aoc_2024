@@ -1,6 +1,9 @@
 -- Usage: lua lua/day01.lua < inputs/sample01.txt
 --    OR: lua lua/day01.lua < inputs/input01.txt
 
+-- Harumph - allegedly a dumbass preventer but doesn't really - was put here to try to get better error messaging
+-- dofile("lua/protect_globals.lua")
+
 -- Make empty variables for each column - curly braces to create a table literal
 local lefties = {}
 local righties = {}
@@ -58,9 +61,6 @@ for n = 1, #lefties do
     -- Subtract left from right (or vice versa, whatever) and then get the absolute value of that
     -- Add up all of those differences to get a solution, and print that.
     addinator = addinator + math.abs(lefties[n] - righties[n])
-
-
-    --math.abs(????)
 end
 
 -- DID WE SOLVE IT
@@ -69,3 +69,32 @@ end
 -- `"Hello " .. "World!"` would become `"Hello World!"`
 -- In Lua, `+` is always mathematical addition, and `..` is always string concatenation
 print("Day 1 Part 1 solution: "..addinator)
+
+
+-- Part 2, the why in the hell would you check similarity this way problem
+
+-- Look at every line in the lefties list
+-- Look for that value in the righties list
+-- Multiply that value by number of occurences in the righties list
+-- Get the sum of all of those for "similarity score"
+
+local function how_many_matches(left_value)
+    local counter = 0
+
+ -- for every line in the right list
+    for i = 1, #righties do
+        -- Do I match you? If I match you, add up my counter by one and move on to the next one. If I don't, then just move on to the next one.
+        if left_value == righties[i] then
+            counter = counter + 1
+        end
+    end
+    return counter
+end
+
+local similarity_score = 0
+for i = 1, #lefties do
+    similarity_score = similarity_score + (lefties[i] * how_many_matches(lefties[i]))
+end
+
+--Ugh
+print("Day 1 Part 2 solution: "..similarity_score)
