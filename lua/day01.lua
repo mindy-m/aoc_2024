@@ -68,4 +68,4 @@ end
 -- concatenation is a fun word to spell
 -- `"Hello " .. "World!"` would become `"Hello World!"`
 -- In Lua, `+` is always mathematical addition, and `..` is always string concatenation
-print("Part 1 solution: "..addinator)
+print("Day 1 Part 1 solution: "..addinator)
