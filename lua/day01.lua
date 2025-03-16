@@ -8,19 +8,19 @@
 local lefties = {}
 local righties = {}
 --Read each line from the input you specify when you run the initial command (see above)
-for line in io.lines() do
+for line in _G.io.lines() do
     -- Look for number, separate by space, number - then check if it found a match
 
     -- assert has two meanings in lua:
     -- 1. (the common meaning) I am assuming that this condition is true, please check my assumption
     -- 2. (the weird Lua-specific meaning) I'm doing something that might fail. If it fails, it will return false or nil and I would like to explode if that happens.
     -- here we are using meaning 2
-    local lefty,righty = assert(line:match("^([0-9]+) +([0-9]+)$"))
+    local lefty,righty = _G.assert(line:match("^([0-9]+) +([0-9]+)$"))
     -- general format is inserting second parameter into the first thing
     -- Take 1st string and covert to an actual number, then put in lefties group which is called a table
-    table.insert(lefties, tonumber(lefty))
+    _G.table.insert(lefties, _G.tonumber(lefty))
     -- Take 2nd string and convert to an actual number, then put in righties group (table)
-    table.insert(righties, tonumber(righty))
+    _G.table.insert(righties, _G.tonumber(righty))
 end
 
 --[[
@@ -37,14 +37,16 @@ end
 -- table.sort does least to most (ascending) by default
 -- if they're strings, it sorts them in ASCII order:
 -- (control characters), (most symbols), 1-9, (some more symbols), A-Z, (some more symbols), a-z, (a few more symbols), aaaaand backspace - actually look at this more later!
-table.sort(lefties)
-table.sort(righties)
+_G.table.sort(lefties)
+_G.table.sort(righties)
 
 -- Step 2: subtract each right number from each left number, and take the absolute value
 
 -- Also, check if the left list and the right list are actually the same length, because the rest of this assumes that.
 -- (here we are using meaning 1 for assert, see above)
-assert(#lefties == #righties)
+-- An assert is "a thing to catch whoopsies." -Mindy
+-- These are very useful in all languages, BUT INCREDIBLY IMPORTANT IN C.
+_G.assert(#lefties == #righties)
 
 -- `n` is the index number. It will start at 1 and count up until it reaches
 -- `#lefties`.
@@ -60,7 +62,7 @@ for n = 1, #lefties do
 
     -- Subtract left from right (or vice versa, whatever) and then get the absolute value of that
     -- Add up all of those differences to get a solution, and print that.
-    addinator = addinator + math.abs(lefties[n] - righties[n])
+    addinator = addinator + _G.math.abs(lefties[n] - righties[n])
 end
 
 -- DID WE SOLVE IT
@@ -68,7 +70,7 @@ end
 -- concatenation is a fun word to spell
 -- `"Hello " .. "World!"` would become `"Hello World!"`
 -- In Lua, `+` is always mathematical addition, and `..` is always string concatenation
-print("Day 1 Part 1 solution: "..addinator)
+_G.print("Day 1 Part 1 solution: "..addinator)
 
 
 -- Part 2, the why in the hell would you check similarity this way problem
@@ -97,4 +99,4 @@ for i = 1, #lefties do
 end
 
 --Ugh
-print("Day 1 Part 2 solution: "..similarity_score)
+_G.print("Day 1 Part 2 solution: "..similarity_score)
