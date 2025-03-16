@@ -1,0 +1,2 @@
+Day 1 Part 1 solution: 1651298
+Day 1 Part 2 solution: 21306195
