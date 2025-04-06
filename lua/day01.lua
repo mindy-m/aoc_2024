@@ -7,6 +7,12 @@
 -- Make empty variables for each column - curly braces to create a table literal
 local lefties = {}
 local righties = {}
+
+-- Every time you see _G in the file, it's just Solra showing that this is a
+-- global variable being accessed. All of the "_G." can be taken out and it
+-- will still do the same thing.
+-- "_G" is a Lua-ism - JavaScript equivalent would be "window".  Also hysterical raisins are unacceptable.
+
 --Read each line from the input you specify when you run the initial command (see above)
 for line in _G.io.lines() do
     -- Look for number, separate by space, number - then check if it found a match
