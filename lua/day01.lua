@@ -11,7 +11,7 @@ local righties = {}
 -- Every time you see _G in the file, it's just Solra showing that this is a
 -- global variable being accessed. All of the "_G." can be taken out and it
 -- will still do the same thing.
--- "_G" is a Lua-ism - JavaScript equivalent would be "window".  Also hysterical raisins are unacceptable.
+-- "_G" is a Lua-ism - JavaScript equivalent would be "window".  Also hysterical raisins are unacceptable but JavaScript is made of them oh no!
 
 --Read each line from the input you specify when you run the initial command (see above)
 for line in _G.io.lines() do
@@ -28,6 +28,9 @@ for line in _G.io.lines() do
     -- Take 2nd string and convert to an actual number, then put in righties group (table)
     _G.table.insert(righties, _G.tonumber(righty))
 end
+
+-- Lua's "local" works like JavaScript's "let". JavaScript also has "var" which
+-- is needlessly confusing and also bad.
 
 --[[
 local thing_what_returns_lines = io.lines()

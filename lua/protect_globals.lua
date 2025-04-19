@@ -1,3 +1,7 @@
+-- As in other files, anywhere you see "_G.", you can just delete that. It's
+-- just Solra making it visually obvious that it's a global variable being
+-- accessed.
+
 local invader_zim = {}
 -- same as:
 --invader_zim.__index = function(tabula, key)
@@ -19,6 +23,7 @@ _G.setmetatable(_G, invader_zim)
 -- 4. Call __index(tabula, key) and say whatever it returned is the result of the lookup.
 -- 5. If there's not a METAtable, or not an __index entry in the METAtable, then just quietly return nil and move on with life.
 
+-- (this code is hypothetical)
 local function look_thing_up_in_table(tabula, key)
     local value = tabula[key]
     if value ~= nil then

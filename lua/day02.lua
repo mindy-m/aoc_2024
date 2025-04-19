@@ -13,7 +13,27 @@ local reports = {}
 -- Alternative option spelling out its a global
 -- for line in _G.io.lines() do
 for line in io.lines() do
-    -- something
+    -- we want to read a report which consists of numbers delimited by space
+    local line_report = {} -- this makes a table / object thingy
+
+    -- take the thing
+    -- tease out the numbers
+    -- ignore the spaces, the spaces are what separates one number from another number
+    -- gmatch is like match, but we can loop over it, instead of just getting one answer
+    for doodad in line:gmatch("[^ ]+") do
+        -- convert to number
+        -- save the list of them
+        table.insert(line_report, tonumber(doodad))
+
+--[[  
+    Previous pattern:
+
+    _G.table.insert(lefties, _G.tonumber(lefty))
+    -- Take 2nd string and convert to an actual number, then put in righties group (table)    _G.table.insert(lefties, _G.tonumber(lefty))
+]]
+
+
+    end
 end
 
 
